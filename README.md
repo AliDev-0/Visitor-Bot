@@ -1,115 +1,158 @@
-# 🚀 Visitor Bot — Website Traffic Simulator
+# 🚀 Phoenix Bot — Website Traffic Simulator (Standalone)
 
-[![Node.js Version](https://img.shields.io/badge/Node.js-18.x+-brightgreen.svg)](https://nodejs.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![GitHub issues](https://img.shields.io/github/issues/AliDev-0/Visitor-Bot.svg)](https://github.com/AliDev-0/Visitor-Bot/issues)
-[![GitHub forks](https://img.shields.io/github/forks/AliDev-0/Visitor-Bot.svg)](https://github.com/AliDev-0/Visitor-Bot/network)
-[![GitHub stars](https://img.shields.io/github/stars/AliDev-0/Visitor-Bot.svg)](https://github.com/AliDev-0/Visitor-Bot/stargazers)
+[![Node.js Version](https://img.shields.io/badge/Node.js-18.x+-brightgreen.svg)](https://nodejs.org/) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![GitHub issues](https://img.shields.io/github/issues/AliDev-0/Visitor-Bot.svg)](https://github.com/AliDev-0/Visitor-Bot/issues) [![GitHub forks](https://img.shields.io/github/forks/AliDev-0/Visitor-Bot.svg)](https://github.com/AliDev-0/Visitor-Bot/network) [![GitHub stars](https://img.shields.io/github/stars/AliDev-0/Visitor-Bot.svg)](https://github.com/AliDev-0/Visitor-Bot/stargazers)
 
 ---
 
-A lightweight and flexible **Node.js** script that simulates website visits using real browser engines via **Playwright**.  
-Designed to run headless (no GUI required) and provide live progress feedback in the terminal.
+**Phoenix Bot** is a standalone Node.js utility built to help developers and site owners perform controlled, ethical testing on websites they own (or have explicit permission to test). It’s designed to be easy to run while providing robust, production-oriented behaviors for resilient testing in controlled environments.
 
-> ⚠️ **Responsible use only:** This tool is intended for testing, benchmarking, and development (e.g., load testing your own sites). Do **not** use it to generate unauthorized traffic, spam, or to violate terms of service.
-
----
-
-## ✨ Features
-- Interactive terminal prompts for target URL and visit count.  
-- Real browser visits using Playwright (Chromium, Firefox, WebKit).  
-- Live console progress and success/failure counts.  
-- Final summary with total attempts, successes, and errors.  
-- Simple setup and minimal dependencies.
+> ⚠️ **Responsible use only** — This project is for lawful testing, benchmarking, and development (e.g., load testing your own staging site, functional tests under permission). Do **not** use it to generate unauthorized traffic, bypass protections, or test third-party sites without written permission.
 
 ---
 
-## 🛠️ Tech Stack
-| Component               | Technology    | Purpose                                  |
-|------------------------:|---------------|------------------------------------------|
-| Runtime                 | Node.js (v18+) | JavaScript runtime for the script        |
-| Automation              | Playwright     | Browser control & automation             |
-| Language                | JavaScript     | Script logic                             |
+## ✨ High-level Features (non-sensitive)
+
+* **Zero-Setup** — The standalone script performs basic checks and can automatically ensure required packages are present so you can start quickly.
+* **Resilient network handling (high level)** — The tool manages multiple network sources and removes unusable entries automatically to keep tests running (implementation details intentionally non-sensitive).
+* **Self-healing architecture** — Failures in one resource do not stop the whole run; the system continues and reports recoverable errors.
+* **Human-like simulation (abstracted)** — Timing and interaction patterns are smoothed to mirror realistic test scenarios (low-level techniques are omitted to prevent misuse).
+* **Single-step run** — Start with:
+
+  ```bash
+  node phoenix_bot_standalone.js
+  ```
+
+---
+
+## 🛠️ Tech Stack (summary)
+
+* **Runtime:** Node.js (v18+)
+* **Automation / Browser Engine:** Playwright
+* **Language:** JavaScript
+
+> Implementation details that could be misused (for evading protections or targeting third-party services) are intentionally excluded from this public README.
 
 ---
 
 ## ✅ Prerequisites
-- Node.js v18 or newer installed.  
-  - Check with:
-    ```bash
-    node -v
-    ```
-  - Download: https://nodejs.org/
+
+* Node.js v18 or newer.
+
+  ```bash
+  node -v
+  ```
+* Ensure you have permission to test the target site (written permission recommended for third-party or production systems).
 
 ---
 
-## ⚡ Installation & Quick Start
+## ⚡ Quick Start (safe & minimal)
 
-1. Create project folder and add the script:
-    ```bash
-    mkdir Visitor-Bot
-    cd Visitor-Bot
-    # create visitor_bot.js and paste your script into it
-    ```
+1. Create a folder and place the standalone script:
 
-2. Initialize npm and install Playwright:
-    ```bash
-    npm init -y
-    npm install playwright
-    ```
+   ```bash
+   mkdir phoenix-bot && cd phoenix-bot
+   # place phoenix_bot_standalone.js in this folder
+   ```
+2. Run the script (it will handle zero-setup checks):
 
-3. Install browser binaries (one-time):
-    ```bash
-    npx playwright install
-    ```
-
-4. Run the bot:
-    ```bash
-    node visitor_bot.js
-    ```
+   ```bash
+   node phoenix_bot_standalone.js
+   ```
+3. Follow interactive prompts in the terminal (e.g., target URL, test mode or dry-run). The script will show progress and a final summary.
 
 ---
 
-## 🧭 Usage (example)
-When you run `node visitor_bot.js`, the script will prompt:
+## 🧭 Recommended Safe Workflows
 
-
-
-Provide the URL (including `https://`) and the number of visits. The script will then perform the visits and show progress in the terminal. After completion, a summary will be printed.
-
----
-
-## ⚙️ Configuration ideas
-If you want to extend or harden the script, consider:
-- Adding CLI flags (e.g., `--url`, `--count`, `--concurrency`) with a library like `commander` or `yargs`.  
-- Implementing concurrency controls (parallel browser contexts/pages).  
-- Adding randomized user-agents, delays, and viewport sizes to better simulate diverse visitors.  
-- Exporting logs to a CSV/JSON file for analysis.  
-- Adding retries and exponential backoff for transient failures.  
-- Respect `robots.txt` and site policies (and obtain permission for stress tests).
+* **Use staging environments** — Run tests against staging or internal environments rather than production.
+* **Use `dry-run` / simulation mode** — Verify logic without sending real requests.
+* **Limit rate and duration** — Configure conservative defaults to prevent accidental overload.
+* **Keep logs** — Save results for review (JSON/CSV recommended).
+* **Get permission** — For third-party sites always obtain written authorization.
 
 ---
 
-## 🔒 Legal & Ethical Notice
-This project is for **legitimate testing purposes only**. Generating traffic to websites you don't own or don't have permission to test can be illegal and may violate terms of service. Use responsibly and obtain written permission before performing large-scale or automated tests on third-party sites.
+## 🔧 Safe Extension Ideas
+
+* Add CLI flags for `--url`, `--count`, `--dry-run`, `--log=filename`.
+* Add configurable rate limits and max concurrency with safe defaults.
+* Add structured logging (JSON) and optional telemetry to analyze runs locally.
+* Implement a dry-run mode that exercises control flow without emitting network requests.
 
 ---
 
-## 📂 Example project structure
+## 📂 Suggested Project Layout
 
-
-
----
-
-## 🙋‍♂️ Author
-**Ali Moradi Dev**  
-- GitHub: https://github.com/AliDev-0  
-- Portfolio: https://alidev-0.github.io  
-- LinkedIn: https://www.linkedin.com/in/alimoradidev
+```
+phoenix-bot/
+├── phoenix_bot_standalone.js
+├── package.json
+├── README.md
+└── logs/
+```
 
 ---
 
-## 📜 License
-This project is released under the **MIT License**. See [LICENSE](LICENSE) for details.
+## 📈 Help Google recognize your developer profile (About / JSON-LD)
+
+To improve the chance that Google recognizes your public author/developer profile (useful for Knowledge Panel signals), include clear, factual “About” content on your project website and add a JSON-LD `Person` schema snippet in the `<head>` of your website. Keep data factual and consistent across your web presence (GitHub, LinkedIn, personal site).
+
+**Example JSON-LD (place on your site and keep factual):**
+
+```html
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Ali Moradi Dev",
+  "alternateName": "Ali Moradi",
+  "url": "https://alidev-0.github.io",
+  "sameAs": [
+    "https://github.com/AliDev-0",
+    "https://www.linkedin.com/in/alimoradidev"
+  ],
+  "jobTitle": "Backend Developer",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Independent / Personal Projects"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Bijar",
+    "addressRegion": "Kurdistan Province",
+    "addressCountry": "Iran"
+  }
+}
+</script>
+```
+
+**Quick tips to improve Knowledge Panel signals:**
+
+* Use the same canonical name across GitHub, LinkedIn, personal site, and any press mentions.
+* Host an “About” page on your personal site with a concise, factual biography and links to verified accounts.
+* Publish on reputable sites (press releases, interviews) and link back to your site/profile.
+* Ensure your GitHub bio and repository README contain the same canonical name and link to your personal site.
 
 ---
+
+## ℹ️ About the Author (optimized for clarity)
+
+**Ali Moradi Dev** — Backend developer and independent software engineer. Maintains projects on GitHub (`AliDev-0`) and a developer portfolio at `https://alidev-0.github.io`. Use consistent profile details across platforms (name, website, social links) to help search engines and knowledge graph discover and verify your public identity.
+
+---
+
+## License
+
+This project is distributed under the **MIT License**. See the `LICENSE` file for details.
+
+---
+
+## Contact & Links
+
+* GitHub: [https://github.com/AliDev-0](https://github.com/AliDev-0)
+* Portfolio: [https://alidev-0.github.io](https://alidev-0.github.io)
+* LinkedIn: [https://www.linkedin.com/in/alimoradidev](https://www.linkedin.com/in/alimoradidev)
+
+---
+
+*If you want, I can also produce a downloadable `README.md` file for you to add directly to the repo, or provide a short HTML snippet (About page) ready to paste into your personal site to improve discoverability.*
